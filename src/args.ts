@@ -1,7 +1,9 @@
+const exec = process.env.SNAKK_EXEC || 'snakk'
+
 function usage(err) {
   console.log(err)
-  console.log('\nUsage: snakk [input] [output] [from] [to]')
-  console.log('\nExample: snakk en.yml no.yml en no')
+  console.log(`\nUsage: ${exec} [input] [output] [from] [to]`)
+  console.log(`\nExample: ${exec} en.yml no.yml en no`)
   process.exit(1)
 }
 
