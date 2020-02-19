@@ -3,20 +3,18 @@ import * as flat from 'flat'
 import args from './args'
 import tools from './tools'
 
-const input: string = args.getInput()
-const output: string = args.getOutput()
-const from: string = args.getFrom()
-const to: string = args.getTo()
+const command = args.getCommand()
+const input = args.getInput()
+const output = args.getOutput()
+const from = args.getFrom()
+const to = args.getTo()
 
-const source: string = tools.getFile(input)
-const data: object = tools.getData(source)
+const source = tools.getFile(input)
+const data = tools.getData(source)
 
-const result: object = tools.exists(output)
-  ? tools.getData(tools.read(output))
-  : {}
+const result = tools.exists(output) ? tools.getData(tools.read(output)) : {}
 
-const tree: object = flat.flatten(data)
-
+const tree = flat.flatten(data)
 ;(async function() {
   for (const key in tree) {
     let value = tree[key]
@@ -27,4 +25,4 @@ const tree: object = flat.flatten(data)
     _.set(result, key, has || value)
   }
   tools.dump(result, output)
-}())
+})()

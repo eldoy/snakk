@@ -7,19 +7,19 @@ const { Translate } = v2
 const api = new Translate()
 
 const tools = {
-  read(name: string): string {
+  read(name) {
     return fs.readFileSync(name, 'utf-8')
   },
 
-  write(name: string, content: string): void {
+  write(name, content) {
     return fs.writeFileSync(name, content)
   },
 
-  exists(name: string): boolean {
+  exists(name) {
     return fs.existsSync(name)
   },
 
-  async translate(value: any, from: string, to: string): Promise<string> {
+  async translate(value, from, to) {
     if (typeof value !== 'string') return value
     try {
       const [result] = await api.translate(value, { from, to })
@@ -30,16 +30,16 @@ const tools = {
     }
   },
 
-  getFile(name: string): string {
+  getFile(name) {
     try {
       return tools.read(name)
     } catch (e) {
-      console.log('\nFile not found.')
+      console.log('\nFile not found:', name)
       process.exit(1)
     }
   },
 
-  getData(file: string): object {
+  getData(file) {
     try {
       return yaml.load(file)
     } catch (e) {
@@ -48,7 +48,7 @@ const tools = {
     }
   },
 
-  getYAML(obj: object): string {
+  getYAML(obj) {
     try {
       return yaml.dump(obj)
     } catch (e) {
@@ -57,9 +57,9 @@ const tools = {
     }
   },
 
-  dump(result: object, output: string): void {
-    const yml: string = tools.getYAML(result)
-    console.log(`Writing file ${ output }`)
+  dump(result, output) {
+    const yml = tools.getYAML(result)
+    console.log(`Writing file ${output}`)
     tools.write(output, yml)
   }
 }
