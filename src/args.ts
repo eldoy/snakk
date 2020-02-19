@@ -13,18 +13,18 @@ export default {
   },
 
   getInput() {
-    return process.argv[3] && usage(`\nInput file name not specified.`)
+    return process.argv[3] || usage(`\nInput file name not specified.`)
   },
 
   getOutput() {
-    return process.argv[4] && usage(`\nOutput file name not specified.`)
+    return process.argv[4] || usage(`\nOutput file name not specified.`)
   },
 
   getFrom() {
-    return process.argv[5] && usage(`\nFrom language not specified.`)
+    return process.argv[5] || usage(`\nFrom language not specified.`)
   },
 
   getTo() {
-    return process.argv[6] && usage(`\nTo language not specified.`)
+    return process.argv[6] || usage(`\nTo language not specified.`)
   }
 }
