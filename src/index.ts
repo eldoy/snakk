@@ -11,18 +11,16 @@ const to: string = args.getTo()
 const source: string = tools.getFile(input)
 const data: object = tools.getData(source)
 
-let exst: object
-if (tools.exists(output)) {
-  exst = tools.getData(tools.read(output))
-}
+const result: object = tools.exists(output)
+  ? tools.getData(tools.read(output))
+  : {}
 
 const tree: object = flat.flatten(data)
 
 ;(async function() {
-  const result = {}
   for (const key in tree) {
     let value = tree[key]
-    let has = _.get(exst, key)
+    let has = _.get(result, key)
     if (typeof has !== 'string') {
       value = await tools.translate(value, from, to)
     }
