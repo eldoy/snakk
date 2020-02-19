@@ -3,15 +3,17 @@ import * as flat from 'flat'
 import args from './args'
 import tools from './tools'
 
-const name: string = args.getName()
+const input: string = args.getInput()
+const output: string = args.getOutput()
 const from: string = args.getFrom()
 const to: string = args.getTo()
-const file: string = tools.getFile(name)
-const data: object = tools.getData(file)
+
+const source: string = tools.getFile(input)
+const data: object = tools.getData(source)
 
 let exst: object
-if (tools.exists(to)) {
-  exst = tools.getData(tools.read(to))
+if (tools.exists(output)) {
+  exst = tools.getData(tools.read(output))
 }
 
 const tree: object = flat.flatten(data)
@@ -26,6 +28,5 @@ const tree: object = flat.flatten(data)
     }
     _.set(result, key, has || value)
   }
-  console.log(JSON.stringify(result, null, 2))
-  tools.dump(result, name, to)
+  tools.dump(result, output)
 }())

@@ -1,35 +1,31 @@
 function usage(err) {
   console.log(err)
-  console.log('\nUsage: snakk [filename] [from] [to]')
-  console.log('\nExample: snakk file.yml en no')
+  console.log('\nUsage: snakk [input] [output] [from] [to]')
+  console.log('\nExample: snakk en.yml no.yml en no')
   process.exit(1)
 }
 
+function arg(n: number, msg: string): string {
+  const a = process.argv[n]
+  if (!a) usage(`\n${msg}`)
+  console.log(a)
+  return a
+}
+
 export default {
-  getName: function(): string {
-    const name = process.argv[2]
-    if (!name) {
-      usage('\nFile name not specified.')
-    }
-    console.log(name)
-    return name
+  getInput(): string {
+    return arg(2, 'Input file name not specified.')
   },
 
-  getFrom: function(): string {
-    const from = process.argv[3]
-    if (!from) {
-      usage('\nFrom language not specified.')
-    }
-    console.log(from)
-    return from
+  getOutput(): string {
+    return arg(3, 'Output file name not specified.')
   },
 
-  getTo: function(): string {
-    const to = process.argv[4]
-    if (!to) {
-      usage('\nFile name not specified.')
-    }
-    console.log(to)
-    return to
+  getFrom(): string {
+    return arg(4, 'From language not specified.')
+  },
+
+  getTo(): string {
+    return arg(5, 'To language not specified.')
   }
 }

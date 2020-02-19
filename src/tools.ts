@@ -19,20 +19,13 @@ const tools = {
     return fs.existsSync(name)
   },
 
-  dump(result: object, name: string, to: string): void {
-    const yml: string = tools.getYAML(result)
-    const [base, ext] = name.split('.')
-    const out = `${to}.${ext}`
-    console.log(`Writing file ${ out }`)
-    tools.write(out, yml)
-  },
-
   async translate(value: any, from: string, to: string): Promise<string> {
     if (typeof value !== 'string') return value
     try {
       const [result] = await api.translate(value, { from, to })
       return (Array.isArray(result) ? result : [result])[0]
     } catch (e) {
+      console.log('Skipping value:', value)
       return value
     }
   },
@@ -62,6 +55,12 @@ const tools = {
       console.log('\nCannot dump YAML')
       process.exit(1)
     }
+  },
+
+  dump(result: object, output: string): void {
+    const yml: string = tools.getYAML(result)
+    console.log(`Writing file ${ output }`)
+    tools.write(output, yml)
   }
 }
 
