@@ -19,10 +19,10 @@ export GOOGLE_APPLICATION_CREDENTIALS="$HOME/.google/credentials.json"
 snakk
 
 # Anatomy
-snakk [input] [output] [from] [to]
+snakk translate [input] [output] [from] [to]
 
 # Example
-snakk en.yml no.yml en no
+snakk translate en.yml no.yml en no
 ```
 
 MIT licensed. Enjoy!
