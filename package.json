@@ -10,12 +10,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest --config jestconfig.json",
+    "test": "jest --watch --config jestconfig.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
+    "prepublish": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
@@ -44,6 +44,8 @@
   ],
   "dependencies": {
     "@google-cloud/translate": "^5.1.6",
-    "js-yaml": "^3.13.1"
+    "flat": "^5.0.0",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.15"
   }
 }
