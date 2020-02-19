@@ -27,5 +27,5 @@ const tree: object = flat.flatten(data)
     _.set(result, key, has || value)
   }
   console.log(JSON.stringify(result, null, 2))
-  tools.dump(result)
+  tools.dump(result, name, to)
 }())

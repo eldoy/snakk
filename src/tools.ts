@@ -19,7 +19,7 @@ const tools = {
     return fs.existsSync(name)
   },
 
-  dump(result: object): void {
+  dump(result: object, name: string, to: string): void {
     const yml: string = tools.getYAML(result)
     const [base, ext] = name.split('.')
     const out = `${to}.${ext}`
