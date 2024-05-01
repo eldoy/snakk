@@ -25,4 +25,13 @@ snakk translate [input] [output] [from] [to]
 snakk translate en.yml no.yml en no
 ```
 
-MIT licensed. Enjoy!
+### Supported languages
+
+The languages supported can be found here:
+
+[Google Cloud API Translate Languages](https://cloud.google.com/translate/docs/languages)
+
+
+### License
+
+ISC licensed. Enjoy!
