@@ -10,9 +10,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest --watch --config jestconfig.json",
-    "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\""
+    "test": "nodemon tests/run.js"
   },
   "repository": {
     "type": "git",
@@ -21,22 +19,15 @@
   "bugs": {
     "url": "https://github.com/eldoy/snakk/issues"
   },
-  "keywords": [],
   "author": "Vidar Eldøy <vidar@eldoy.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "jest": "^25.1.0",
-    "prettier": "^1.19.1",
-    "ts-jest": "^25.2.0",
-    "typescript": "^3.7.5"
-  },
+  "license": "ISC",
   "files": [
     "lib/**/*"
   ],
   "dependencies": {
-    "@google-cloud/translate": "^5.1.6",
-    "flat": "^5.0.0",
-    "js-yaml": "^3.13.1",
-    "lodash": "^4.17.15"
+    "@google-cloud/translate": "^8.2.0",
+    "extras": "^0.12.1",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21"
   }
 }
