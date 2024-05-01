@@ -1,6 +1,6 @@
 {
   "name": "snakk",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Translate YAML files using the Google Translate API",
   "main": "index.js",
   "bin": {
