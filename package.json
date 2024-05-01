@@ -2,7 +2,7 @@
   "name": "snakk",
   "version": "0.2.0",
   "description": "Translate YAML files using the Google Translate API",
-  "main": "lib/index.js",
+  "main": "index.js",
   "bin": {
     "snakk": "./bin/snakk.js"
   },
@@ -21,9 +21,6 @@
   },
   "author": "Vidar Eldøy <vidar@eldoy.com>",
   "license": "ISC",
-  "files": [
-    "lib/**/*"
-  ],
   "dependencies": {
     "@google-cloud/translate": "^8.2.0",
     "extras": "^0.12.1",
